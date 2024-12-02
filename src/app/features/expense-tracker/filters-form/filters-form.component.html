@@ -1,0 +1,29 @@
+<form [formGroup]="filterForm">
+  <mat-form-field appearance="fill" floatLabel="always" class="">
+    <mat-label>
+      Filter by category
+    </mat-label>
+    <mat-select
+      formControlName="category"
+    >
+      <mat-option value="all">All</mat-option>
+      <mat-option [value]="category.groceries">Groceries</mat-option>
+      <mat-option [value]="category.salary">Salary</mat-option>
+      <mat-option [value]="category.entertainment">Entertainment</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" floatLabel="always" class="">
+    <mat-label>
+      Filter by Transaction type
+    </mat-label>
+    <mat-select
+      formControlName="transactionType"
+    >
+      <mat-option value="all">All</mat-option>
+      <mat-option [value]="transactionType.income">Income</mat-option>
+      <mat-option [value]="transactionType.expense">Expense</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+

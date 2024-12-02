@@ -1,0 +1,54 @@
+<form [formGroup]="expenseForm">
+  <mat-form-field class="">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput formControlName="name">
+    @if (expenseForm.get('name')?.hasError('required')) {
+      <mat-error>Please enter name</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="">
+    <mat-label>Amount</mat-label>
+    <input type="text" matInput formControlName="amount" appAmountDirective>
+    @if (expenseForm.get('amount')?.hasError('pattern')) {
+      <mat-error>Please enter amount numbers</mat-error>
+    }
+    @if (expenseForm.get('amount')?.hasError('required')) {
+      <mat-error>Please enter amount</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field appearance="fill" floatLabel="always" class="">
+    <mat-label>
+      Transaction type
+    </mat-label>
+    <mat-select
+      formControlName="transactionType"
+    >
+      <mat-option [value]="transactionType.income">Income</mat-option>
+      <mat-option [value]="transactionType.expense">Expense</mat-option>
+    </mat-select>
+    @if (expenseForm.get('transactionType')?.hasError('required')) {
+      <mat-error>You must make a selection</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field appearance="fill" floatLabel="always" class="">
+    <mat-label>
+      Category
+    </mat-label>
+    <mat-select
+      formControlName="category"
+    >
+      <mat-option [value]="category.groceries">Groceries</mat-option>
+      <mat-option [value]="category.salary">Salary</mat-option>
+      <mat-option [value]="category.entertainment">Entertainment</mat-option>
+    </mat-select>
+    @if (expenseForm.get('category')?.hasError('required')) {
+      <mat-error>You must make a selection</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Transaction Date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="transactionDate">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</form>
